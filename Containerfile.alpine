@@ -1,11 +1,12 @@
 FROM docker.io/alpine:latest
 
-ARG OPENVOX_GID=64604
-ARG OPENVOX_UID=64604
-ARG OPENVOX_USER_NAME=puppet
-ARG OPENVOX_GROUP_NAME=puppet
-ARG OPENVOX_USER_HOME=/opt/puppetlabs/server/data/puppetserver
-ARG OPENVOX_USER_SHELL=/sbin/nologin
+ARG \
+    OPENVOX_GID=64604 \
+    OPENVOX_UID=64604 \
+    OPENVOX_USER_NAME=puppet \
+    OPENVOX_GROUP_NAME=puppet \
+    OPENVOX_USER_HOME=/opt/puppetlabs/server/data/puppetserver \
+    OPENVOX_USER_SHELL=/sbin/nologin
 
 ENV OPENVOX_GID=${OPENVOX_GID} \
     OPENVOX_UID=${OPENVOX_UID} \
