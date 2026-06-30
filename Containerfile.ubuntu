@@ -1,0 +1,22 @@
+FROM docker.io/ubuntu:latest
+
+ARG OPENVOX_GID=64604
+ARG OPENVOX_UID=64604
+ARG OPENVOX_USER_NAME=puppet
+ARG OPENVOX_GROUP_NAME=puppet
+ARG OPENVOX_USER_HOME=/opt/puppetlabs/server/data/puppetserver
+ARG OPENVOX_USER_SHELL=/sbin/nologin
+
+ENV OPENVOX_GID=${OPENVOX_GID} \
+    OPENVOX_UID=${OPENVOX_UID} \
+    OPENVOX_USER_NAME=${OPENVOX_USER_NAME} \
+    OPENVOX_GROUP_NAME=${OPENVOX_GROUP_NAME} \
+    OPENVOX_USER_HOME=${OPENVOX_USER_HOME} \
+    OPENVOX_USER_SHELL=${OPENVOX_USER_SHELL}
+
+COPY prepare.sh /tmp/prepare.sh
+
+RUN apt update && apt install -y bash && \
+    chmod +x /tmp/prepare.sh && \
+    /tmp/prepare.sh && \
+    rm -f /tmp/prepare.sh
