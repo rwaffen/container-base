@@ -2,6 +2,30 @@
 
 source /etc/os-release
 
+if [ -z "${OPENVOX_UID}" ]; then
+  OPENVOX_UID=64604
+fi
+
+if [ -z "${OPENVOX_GID}" ]; then
+  OPENVOX_GID=64604
+fi
+
+if [ -z "${OPENVOX_USER_NAME}" ]; then
+  OPENVOX_USER_NAME=puppet
+fi
+
+if [ -z "${OPENVOX_GROUP_NAME}" ]; then
+  OPENVOX_GROUP_NAME=puppet
+fi
+
+if [ -z "${OPENVOX_USER_HOME}" ]; then
+  OPENVOX_USER_HOME=/opt/puppetlabs/${OPENVOX_USER_NAME}
+fi
+
+if [ -z "${OPENVOX_USER_SHELL}" ]; then
+  OPENVOX_USER_SHELL=/sbin/nologin
+fi
+
 # Create puppet user and group, and set permissions on necessary directories
 # Used for rootless execution of the container and to match permissions expected by Puppet Server
 if [ "$ID" = "alpine" ]; then

@@ -14,9 +14,6 @@ ENV OPENVOX_GID=${OPENVOX_GID} \
     OPENVOX_USER_HOME=${OPENVOX_USER_HOME} \
     OPENVOX_USER_SHELL=${OPENVOX_USER_SHELL}
 
-COPY prepare.sh /tmp/prepare.sh
-
-RUN apt update && apt install -y bash && \
-    chmod +x /tmp/prepare.sh && \
-    /tmp/prepare.sh && \
+RUN apt update && apt install -y bash curl && \
+    curl -sL https://raw.githubusercontent.com/rwaffen/container-base/refs/heads/main/prepare.sh | bash - && \
     rm -f /tmp/prepare.sh

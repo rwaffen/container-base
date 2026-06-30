@@ -16,7 +16,6 @@ ENV OPENVOX_GID=${OPENVOX_GID} \
 
 COPY prepare.sh /tmp/prepare.sh
 
-RUN apk update && apk add --no-cache bash && \
-    chmod +x /tmp/prepare.sh && \
-    /tmp/prepare.sh && \
+RUN apk update && apk add --no-cache bash curl && \
+    curl -sL https://raw.githubusercontent.com/rwaffen/container-base/refs/heads/main/prepare.sh | bash - && \
     rm -f /tmp/prepare.sh
