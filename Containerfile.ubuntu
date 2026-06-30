@@ -15,5 +15,4 @@ ENV OPENVOX_GID=${OPENVOX_GID} \
     OPENVOX_USER_SHELL=${OPENVOX_USER_SHELL}
 
 RUN apt update && apt install -y bash curl && \
-    curl -sL https://raw.githubusercontent.com/rwaffen/container-base/refs/heads/main/prepare.sh | bash - && \
-    rm -f /tmp/prepare.sh
+    curl -sL https://raw.githubusercontent.com/rwaffen/container-base/refs/heads/main/prepare.sh | bash -
